@@ -1,0 +1,31 @@
+.campaign-detail-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: auto; /* Center the detail page */
+}
+
+.campaign-detail-container h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.campaign-detail-container h2, 
+.campaign-detail-container h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.donate-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.donate-button:hover {
+  background-color: #218838;
+}
