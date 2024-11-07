@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Footprint Results</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js -->
+    <style>
+        body {
+            display: flex;
+            justify-content: center; /* Center the container horizontally */
+            align-items: center; /* Center the container vertically */
+            height: 100vh; /* Full viewport height */
+            margin: 0; /* Remove default margin */
+            background-color: #f5f5f5; /* Light background color */
+            background-image: url('{{ url_for('static', filename='profile.jpg') }}'); /* Background image */
+
+            background-repeat: no-repeat;
+            flex-direction: column; /* Stack items vertically */
+        }
+
+        .result-container {
+            background: rgba(255, 255, 255, 0.9); /* White background for the dashboard */
+            padding: 20px; /* Inner padding */
+            border-radius: 20px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            text-align: left; /* Align text inside the container */
+            width: 400px; /* Fixed width for the container */
+            margin-bottom: 20px; /* Increased space below each box */
+        }
+
+        .content {
+            display: flex; /* Use flexbox for horizontal layout */
+            justify-content: space-between; /* Space out the elements */
+            align-items: flex-start; /* Align items at the start */
+            width: 80%; /* Set the width of the content area */
+            margin: 0 auto; /* Center the content area */
+        }
+
+        h1 {
+            color: #007BFF; /* Header color */
+        }
+
+        h3 {
+            color: #333; /* Subheader color */
+        }
+
+        p {
+            color: #555; /* Change paragraph text color */
+            margin: 10px 0; /* Space between paragraphs */
+            font-weight: bold;
+        }
+
+        a {
+            background: rgba(255, 255, 255, 0.9); /* White background for the button */
+            padding: 10px; /* Inner padding */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            text-align: center; /* Center text inside the button */
+            width: 150px; /* Fixed width for the button */
+            margin-top: 20px; /* Space above the link */
+            color: #007BFF; /* Link color */
+            font-weight: bold; /* Bold text */
+            text-decoration: none; /* Remove underline */
+            display: block; /* Make it block-level for easier centering */
+        }
+
+        a:hover {
+            color: #0056b3; /* Darker blue on hover */
+        }
+
+        .footer {
+            margin-top: 180; /* Push the footer to the bottom */
+            text-align: center; /* Center the link horizontally */
+        }
+
+        #myChart {
+            width: 10px; /* Set width of the chart */
+            height: 100px; /* Set height of the chart */
+            margin-left: 20px; /* Space between text and chart */
+            }
+
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="result-container">
+            <h1>Water Footprint Results</h1>
+            <h3>Water footprint for {{ crop }} on {{ area }} hectares of land:</h3>
+            <p> - Blue water footprint: {{ blue_footprint | round(2) }} cubic meters</p>
+            <p> - Green water footprint: {{ green_footprint | round(2) }} cubic meters</p>
+            <p> - Gray water footprint: {{ gray_footprint | round(2) }} cubic meters</p>
+            <p> - Total water footprint: {{ total_footprint | round(2) }} cubic meters</p>
+        </div>
+
+        <!-- Add a canvas element for the pie chart -->
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <!-- Centered link at the bottom -->
+    <div class="footer">
+        <a href="{{ url_for('water_footprint') }}">Calculate Again</a>
+    </div>
+
+    <script>
+        // Get the data for the pie chart
+        const blueFootprint = {{ blue_footprint | round(2) }};
+        const greenFootprint = {{ green_footprint | round(2) }};
+        const grayFootprint = {{ gray_footprint | round(2) }};
+
+        // Calculate the total footprint
+        const totalFootprint = blueFootprint + greenFootprint + grayFootprint;
+
+        // Prepare data for the pie chart
+        const data = {
+            labels: [
+                'Blue Water Footprint',
+                'Green Water Footprint',
+                'Gray Water Footprint'
+            ],
+            datasets: [{
+                label: 'Water Footprint',
+                data: [
+                    (blueFootprint / totalFootprint * 100), // Blue percentage
+                    (greenFootprint / totalFootprint * 100), // Green percentage
+                    (grayFootprint / totalFootprint * 100)  // Gray percentage
+                ],
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.6)', // Blue
+                    'rgba(75, 192, 192, 0.6)', // Green
+                    'rgba(255, 99, 132, 0.6)'  // Gray
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)', // Blue
+                    'rgba(75, 192, 192, 1)', // Green
+                    'rgba(255, 99, 132, 1)'  // Gray
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        // Config for the pie chart
+        const config = {
+            type: 'pie',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                                color: '#000000', // Darker color for the labels
+                                font: {
+                                        size: 14, // Increase font size
+                                        weight: 'bold' // Make labels bold
+                                }
+                        }
+                },
+                    title: {
+                        display: true,
+                        text: 'Water Footprint Distribution'
+                    }
+                }
+            },
+        };
+
+        // Render the pie chart
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
+</body>
+</html>

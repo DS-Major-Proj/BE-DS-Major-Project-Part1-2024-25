@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+                display: flex;
+                justify-content: center; /* Center the container horizontally */
+                align-items: center; /* Center the container vertically */
+                height: 100vh; /* Full viewport height */
+                margin: 0; /* Remove default margin */
+                background-image: url('{{ url_for('static', filename='bg.jpg') }}'); /* Background image */
+                background-size: cover; /* Cover the entire viewport */
+                background-position: center; /* Center the image */
+                background-repeat: no-repeat; /* Prevent image from repeating */
+                flex-direction: column; /* Stack items vertically */
+                padding-top: 10px;
+            }
+
+        .dashboard-container {
+            background: rgba(255, 255, 255, 0.9); /* White background for the dashboard */
+            padding: 20px; /* Inner padding */
+            padding-top: 20px;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            text-align: center; /* Center text inside the container */
+            width: 300px; /* Fixed width for the container */
+            margin-bottom: 40px; /* Increased space below each box */
+            gap : 10px
+        }
+
+
+
+        ul {
+            list-style-type: none; /* Remove default list styling */
+            padding: 0; /* Remove default padding */
+        }
+
+        li {
+            margin: 15px 0; /* Space between list items */
+        }
+
+        a {
+            text-decoration: none; /* Remove underline from links */
+            color: #007BFF; /* Link color */
+            font-weight: bold; /* Bold text */
+        }
+
+        a:hover {
+            color: #0056b3; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Welcome to the Dashboard</h1>
+        <ul>
+            <br><li><a href="{{ url_for('weed_detection') }}">Weed Detection</a></li><br>
+            <br><li><a href="{{ url_for('soil_moisture') }}">Soil Moisture</a></li><br>
+            <br><li><a href="{{ url_for('water_footprint') }}">Water Footprint</a></li><br>
+            <br><li><a href="{{ url_for('unwanted_plant_detection') }}">Crop Health Monitoring</a></li><br>
+        </ul>
+    </div>
+
