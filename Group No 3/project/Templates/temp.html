@@ -1,0 +1,43 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domain Selection</title>
+    <link rel="stylesheet" href="/Statics/que1.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h2>In what domain are you making the website?</h2>
+            <form action="{{ url_for('builder') }}" method="GET">  <!-- Action points to builder route -->
+                <label class="radio-container">
+                    <input type="radio" name="domain" value="small-business">
+                    Small Business
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radio-container">
+                    <input type="radio" name="domain" value="charity">
+                    Charity
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radio-container">
+                    <input type="radio" name="domain" value="education">
+                    Education
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radio-container">
+                    <input type="radio" name="domain" value="blog">
+                    Blog
+                    <span class="checkmark"></span>
+                </label>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+        <div class="image-box">
+            <img src="/Statics/Images/question.webp" alt="Website Domain Selection">
+        </div>
+        <a href="{{ url_for('builder') }}" class="back-btn">Go to Main Builder</a> <!-- Link to builder page -->
+    </div>
+</body>
+</html>

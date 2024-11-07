@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrapesJS Drag and Drop Builder</title>
+
+    <!-- External CSS (like Font Awesome for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/Statics/style.css">
+
+    <!-- GrapesJS CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/grapesjs/0.17.26/css/grapes.min.css">
+</head>
+<body>
+
+    <!-- Top Panel for Controls (Centered) -->
+    <div class="panel__top">
+        <button id="undo">Undo</button>
+        <button id="redo">Redo</button>
+        <button id="preview">Preview</button>
+        <button id="clear">Clear</button>
+    </div>
+
+    <!-- Container for the layout -->
+    <div class="container">
+        <!-- Blocks Section (Left Panel) -->
+        <div id="blocks">
+            <!-- Template Upload Block -->
+            <div class="gjs-block">
+                <label for="templateUpload">Upload Template:</label>
+                <input type="file" id="templateUpload" webkitdirectory directory>
+            </div>
+        </div>
+
+        <!-- Editor Container (Main Canvas Area) -->
+        <div id="editor"></div>
+    </div>
+
+    <!-- GrapesJS and JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/grapesjs/0.17.26/grapes.min.js"></script>
+    <script src="/Statics/main.js"></script>
+
+</body>
+</html>

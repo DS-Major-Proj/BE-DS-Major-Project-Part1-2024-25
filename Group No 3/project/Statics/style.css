@@ -1,0 +1,161 @@
+/* General reset and layout */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+}
+
+/* Container for blocks and editor */
+.container {
+    display: flex; /* Align blocks and editor side by side */
+    flex-grow: 1; /* Take the remaining height */
+}
+
+/* Blocks section */
+#blocks {
+    width: 250px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-right: 1px solid #ddd;
+    overflow-y: auto;
+}
+
+/* Editor area */
+#editor {
+    flex-grow: 1;
+    height: 100vh; /* Full height of the viewport */
+    border: 1px solid #ddd;
+    background: #fff;
+    position: relative; /* Allows absolutely positioned children */
+}
+
+/* Block appearance */
+.gjs-block {
+    cursor: pointer;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #fff;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Define different pastel colors for each block */
+.gjs-block-section {
+    background-color: #ffebcc; /* Pastel orange */
+}
+
+.gjs-block-text {
+    background-color: #ccffcc; /* Pastel green */
+}
+
+.gjs-block-image {
+    background-color: #ccf2ff; /* Pastel blue */
+}
+
+.gjs-block-video {
+    background-color: #ffd9cc; /* Pastel peach */
+}
+
+.gjs-block-button {
+    background-color: #ffe6f7; /* Pastel pink */
+}
+
+.gjs-block-link {
+    background-color: #e6ccff; /* Pastel purple */
+}
+
+.gjs-block-list {
+    background-color: #fff7cc; /* Pastel yellow */
+}
+
+.gjs-block-form {
+    background-color: #d9ffcc; /* Pastel light green */
+}
+
+.gjs-block-input {
+    background-color: #ccf5ff; /* Pastel sky blue */
+}
+
+.gjs-block:hover {
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for blocks inside the canvas */
+.gjs-cv-canvas {
+    background: #f9f9f9;
+}
+
+/* Control panel styles */
+.panel__top {
+    padding: 10px;
+    text-align: center;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: center; /* Center the buttons */
+}
+
+/* Buttons inside the panel */
+.panel__top button {
+    margin: 0 10px;
+    padding: 8px 15px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.panel__top button:hover {
+    background-color: #0056b3;
+}
+
+/* Accessibility focus style */
+.panel__top button:focus {
+    outline: 2px solid #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #blocks {
+        width: 100%;
+        height: 150px;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+    #editor {
+        height: calc(100vh - 150px);
+    }
+
+    .panel__top {
+        top: 150px;
+        left: 0;
+        right: 0;
+    }
+}
+
+/* Style for upload input */
+#templateUpload {
+    margin-top: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: block; /* Makes it a block element */
+}
+
+/* Label styling */
+#blocks label {
+    font-weight: bold;
+    display: block; /* Makes it a block element */
+    margin-bottom: 5px; /* Adds space below the label */
+}
+
+/* Allow components to be positioned freely */
+.gjs-cv-canvas > * {
+    position: absolute; /* Enable absolute positioning for components */
+}
