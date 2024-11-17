@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oral Detection</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/styles.css">
+    
+</head>
+<body>
+    <header class="header">
+        <!-- <h1>Upload X-ray Image for Disease Prediction</h1> -->
+        <nav>
+            <ul class="head">
+                <a href="index.html" style="text-decoration: none;"><li class="heads">Back</li></a>
+            </ul>
+        </nav>
+
+        <nav class="head1">
+            <ul>
+                <a href="" style="text-decoration: none;"><li class="name">SmartDentAi</li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="form">
+        <!-- Form to upload the X-ray image -->
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <h1 style="color: #2c6b7a;">Oral Detection</h1>
+            <p>Upload your file here!</p>
+        <input type="file" name="file" accept="image/*" class="img" required>
+        <br>
+        <input type="submit" value="Upload and Predict" class="btn">
+    </form>
+    </div>
+    
+</body>
+</html>
